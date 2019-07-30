@@ -57,7 +57,7 @@
                                 </td>
                                 <td scope="row" class="text-center">
                                     <button type="button" data-toggle="modal" data-target="#edit<?= $row->id ?>" class="btn btn-sm btn-secondary">Edit</button>
-                                    <a href="<?= site_url('admin/detail_halaqoh/'.$row->id) ?>" class="btn btn-sm btn-info">Detail</a>
+                                    <a href="<?= site_url('halaqoh/detail/'.$row->id) ?>" class="btn btn-sm btn-info">Detail</a>
                                     <button type="button" data-toggle="modal" data-target="#delete<?= $row->id ?>" class="btn btn-sm btn-danger">Hapus</button>
                                 </td>
                             </tr>
