@@ -38,7 +38,7 @@
                     </div>
                   </div>
                   <div class="table-responsive">
-                    <table class="table align-items-center table-flush table-sm">
+                    <table class="table align-items-center table-flush">
                       <thead class="thead-light">
                         <tr>
                           <th scope="col" width="10">No</th>
@@ -56,7 +56,7 @@
                           <td scope="row">
                             <div class="media align-items-center">
                               <div class="media-body">
-                                <span class="mb-0 text-sm"><?= $row->nama ?></span>
+                                <span class="mb-0 text-sm"><strong><?= $row->nama ?></strong></span>
                               </div>
                             </div>
                           </td>

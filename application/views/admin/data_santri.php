@@ -6,7 +6,7 @@
             <!-- Table -->
             <div class="row">
                 <div class="col">
-                    <div class="card shadow" style="height: 500px">
+                    <div class="card shadow" style="max-height: 500px">
                         <div class="card-header bg-white border-0">
                             <div class="row align-items-center">
                                 <div class="col">
@@ -21,9 +21,9 @@
                             <table class="table align-items-center table-flush">
                                 <thead class="thead-light">
                                     <tr>
-                                        <th scope="col">No</th>
+                                        <th scope="col" width="10">No</th>
                                         <th scope="col">Nama</th>
-                                        <th scope="col">Halaqoh</th>
+                                        <th scope="col" class="text-center">Halaqoh</th>
                                     </tr>
                                 </thead>
                                 <tbody id="myTable">
@@ -42,7 +42,7 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             <?php if($row->nama_halaqoh == TRUE): ?>
                                                 <span class="badge badge-dot mr-4"><?= $row->nama_halaqoh ?></span>
                                             <?php else: ?>

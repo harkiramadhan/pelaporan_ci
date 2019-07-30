@@ -6,7 +6,7 @@
     <!-- Table -->
     <div class="row">
         <div class="col">
-            <div class="card shadow">
+            <div class="card shadow" style="max-height: 500px">
 
                 <div class="card-header bg-white border-0">
                     <div class="row align-items-center">
@@ -53,7 +53,10 @@
                                     <span class="badge badge-dot mr-4"><?= $row->nama_halaqoh ?></span>
                                 </td>
                                 <td>
-                                    <span class="badge badge-dot mr-4">10 Orang</span>
+                                    <span class="badge badge-dot mr-4"><?php 
+                                    $count = $this->db->get_where('tb_halaqoh_detail', ['id_halaqoh'=>$row->id])->num_rows();
+                                    echo $count;
+                                    ?> Orang</span>
                                 </td>
                                 <td scope="row" class="text-center">
                                     <button type="button" data-toggle="modal" data-target="#edit<?= $row->id ?>" class="btn btn-sm btn-secondary">Edit</button>
