@@ -25,18 +25,6 @@ class Admin extends CI_Controller{
         $this->load->view('layout/footer', $data);
     }
 
-    function data_siswa(){
-        $guruid                 = $this->session->userdata('id_guru');
-        $guru                   = $this->M_Auth->get_guru($guruid);
-        $data['title']          = "Data Siswa";
-        $data['guru']           = $guru;
-        $data['santri']         = $this->M_Admin->get_santri()->result();
-
-        $this->load->view('layout/header_admin', $data);
-        $this->load->view('admin/data_santri', $data);
-        $this->load->view('layout/footer', $data);
-    }
-
     function data_user(){
         $guruid                 = $this->session->userdata('id_guru');
         $guru                   = $this->M_Auth->get_guru($guruid);

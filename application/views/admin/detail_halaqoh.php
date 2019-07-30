@@ -13,7 +13,7 @@
               </div>
             </div>
           </div>
-          <div class="card-body mb-2">
+          <div class="card-body mb-5">
             <div class="row">
               <div class="col-lg-6 text-center">
                 <div class="form-group">
@@ -37,7 +37,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="table-responsive">
+                  <div class="table-responsive" style="max-height: 500px">
                     <table class="table align-items-center table-flush">
                       <thead class="thead-light">
                         <tr>

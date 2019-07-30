@@ -90,7 +90,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php if($this->uri->segment(2) == "data_siswa" && $this->uri->segment(1) == "admin"){ echo "active"; }  ?>" href="<?= site_url('admin/data_siswa') ?>">
+                        <a class="nav-link <?php if($this->uri->segment(1) == "siswa"){ echo "active"; }  ?>" href="<?= site_url('siswa') ?>">
                             <i class="ni ni-planet text-blue"></i> Data Siswa
                         </a>
                     </li>
