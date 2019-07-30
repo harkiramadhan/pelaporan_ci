@@ -4,6 +4,7 @@ class Admin extends CI_Controller{
     function __construct(){
         parent::__construct();
         $this->load->model('M_Auth');
+        $this->load->model('M_Admin');
         if($this->session->userdata('masuk') !=TRUE){
             $url=base_url();
             redirect ($url);
@@ -29,7 +30,7 @@ class Admin extends CI_Controller{
         $guru                   = $this->M_Auth->get_guru($guruid);
         $data['title']          = "Data Siswa";
         $data['guru']           = $guru;
-        $data['santri']         = $this->M_Auth->get_santri()->result();
+        $data['santri']         = $this->M_Admin->get_santri()->result();
 
         $this->load->view('layout/header_admin', $data);
         $this->load->view('admin/data_santri', $data);
@@ -41,11 +42,36 @@ class Admin extends CI_Controller{
         $guru                   = $this->M_Auth->get_guru($guruid);
         $data['title']          = "Data Halaqoh";
         $data['guru']           = $guru;
-        $data['halaqoh']        = $this->M_Auth->get_halaqoh()->result();
+        $data['halaqoh']        = $this->M_Admin->get_halaqoh()->result();
+        $data['list_guru']      = $this->M_Admin->get_guru()->result();
 
         $this->load->view('layout/header_admin', $data);
         $this->load->view('admin/data_halaqoh', $data);
         $this->load->view('layout/footer', $data);
+    }
+
+    function tambah_halaqoh(){
+        $this->method = $_SERVER['REQUEST_METHOD'];
+        if($this->method == "POST"){
+            $this->M_Admin->tambah_halaqoh();
+            $this->session->set_flashdata('sukses', "Halaqoh Berhasil Di Tambahkan");
+            redirect($_SERVER['HTTP_REFERER']);
+        }else{
+            $this->session->set_flashdata('error', "Halaqoh Gagal Di Tambahkan");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
+    }
+
+    function edit_halaqoh($id){
+        $this->method = $_SERVER['REQUEST_METHOD'];
+        if($this->method == "POST"){
+            $this->M_Admin->edit_halaqoh($id);
+            $this->session->set_flashdata('sukses', "Halaqoh Berhasil Di Edit");
+            redirect($_SERVER['HTTP_REFERER']);
+        }else{
+            $this->session->set_flashdata('error', "Halaqoh Gagal Di Edit");
+            redirect($_SERVER['HTTP_REFERER']);
+        }
     }
 
     function data_user(){
