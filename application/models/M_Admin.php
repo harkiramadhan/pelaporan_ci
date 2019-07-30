@@ -1,6 +1,5 @@
 <?php
 class M_Admin extends CI_Model{
-
     function get_santri(){
         $this->db->select('tb_siswa.nama, tb_halaqoh.nama_halaqoh');
         $this->db->order_by('nama', 'ASC');

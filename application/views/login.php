@@ -57,7 +57,7 @@
         <!-- Header -->
         <div class="header bg-gradient-default py-7 py-lg-8">
             <div class="container">
-                <div class="header-body text-center mb-5">
+                <div class="header-body text-center mb-3">
                     <div class="row justify-content-center">
                         <div class="col-lg-5 col-md-6">
                             <h1 class="text-white">Sistem Informasi</h1>
@@ -86,18 +86,22 @@
                             </li>
                         </ul>
                     </div>
+                    <h2 class="text-danger text-center"> <b><?= $this->session->flashdata('msg'); ?></b> </h2>
                     <div class="card shadow">
                         <div class="card-body">
                             <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade show active" id="tabs-icons-text-1" role="tabpanel" aria-labelledby="tabs-icons-text-1-tab">
                                     <div class="container">
+                                        <div class="card-header text-center">
+                                            <h3>Admin / Musyrif</h3>
+                                        </div>
                                         <form role="form" method="POST" action="<?= site_url('login/intern'); ?>">
                                             <div class="form-group-lg mb-3">
                                                 <div class="input-group input-group-alternative">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                                     </div>
-                                                    <input class="form-control form-control-alternative" type="text" placeholder="Username" name="username">
+                                                    <input class="form-control form-control-alternative" type="text" placeholder="Username" name="username" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -105,7 +109,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                                     </div>
-                                                    <input class="form-control" placeholder="Password" type="password" name="password">
+                                                    <input class="form-control" type="password" name="password" required>
                                                 </div>
                                             </div>
                                             <div class="text-center">
@@ -117,12 +121,15 @@
                                 <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
                                     <div class="container">
                                         <form role="form" method="POST" action="<?= site_url('login/ws'); ?>">
+                                            <div class="card-header text-center">
+                                                <h3>Walisantri</h3>
+                                            </div>
                                             <div class="form-group-lg mb-3">
                                                 <div class="input-group input-group-alternative">
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                                     </div>
-                                                    <input class="form-control form-control-alternative" type="text" placeholder="Username">
+                                                    <input class="form-control form-control-alternative" type="text" placeholder="Username" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -130,7 +137,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                                     </div>
-                                                    <input class="form-control" placeholder="Password" type="password">
+                                                    <input class="form-control" type="password" required>
                                                 </div>
                                             </div>
                                             <div class="text-center">
