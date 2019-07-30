@@ -95,7 +95,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?php if($this->uri->segment(2) == "data_halaqoh" && $this->uri->segment(1) == "admin"){ echo "active"; }  ?>" href="<?= site_url('admin/data_halaqoh') ?>">
+                        <a class="nav-link <?php if($this->uri->segment(1) == "halaqoh"){ echo "active"; }  ?>" href="<?= site_url('halaqoh') ?>">
                             <i class="ni ni-pin-3 text-orange"></i> Data Halaqoh
                         </a>
                     </li>

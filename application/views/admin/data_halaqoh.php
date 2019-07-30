@@ -29,7 +29,7 @@
                                 <th scope="col">Nama Musyrif</th>
                                 <th scope="col">Nama Halaqoh</th>
                                 <th scope="col">Jumlah Santri</th>
-                                <th scope="col">Action</th>
+                                <th scope="col" class="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody id="myTable">
@@ -55,9 +55,10 @@
                                 <td>
                                     <span class="badge badge-dot mr-4">10 Orang</span>
                                 </td>
-                                <td>
+                                <td scope="row" class="text-center">
                                     <button type="button" data-toggle="modal" data-target="#edit<?= $row->id ?>" class="btn btn-sm btn-secondary">Edit</button>
-                                    <button type="button" class="btn btn-sm btn-danger">Hapus</button>
+                                    <a href="<?= site_url('admin/detail_halaqoh/'.$row->id) ?>" class="btn btn-sm btn-info">Detail</a>
+                                    <button type="button" data-toggle="modal" data-target="#delete<?= $row->id ?>" class="btn btn-sm btn-danger">Hapus</button>
                                 </td>
                             </tr>
                             <?php } ?>
@@ -79,7 +80,7 @@
                             <span aria-hidden="true">×</span>
                         </button>
                 </div>
-                <form action="<?= site_url('admin/tambah_halaqoh') ?>" method="POST">
+                <form action="<?= site_url('halaqoh/tambah') ?>" method="POST">
                 <div class="modal-body bg-secondary">
                         <div class="container-fluid">
                             <div class="row">
@@ -120,7 +121,7 @@
                             <span aria-hidden="true">×</span>
                         </button>
                 </div>
-                <form action="<?= site_url('admin/edit_halaqoh/'.$edit->id) ?>" method="POST">
+                <form action="<?= site_url('halaqoh/edit/'.$edit->id) ?>" method="POST">
                 <div class="modal-body bg-secondary">
                         <div class="container-fluid">
                             <div class="row">
@@ -148,6 +149,36 @@
                     <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
                 </div>
                 </form>
+            </div>
+        </div>
+    </div>
+    <?php } ?>
+
+    <?php foreach($halaqoh as $delete){ ?>
+    <div class="col-md-4">
+        <div class="modal fade" id="delete<?= $delete->id ?>" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+            <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                <div class="modal-content bg-gradient-danger">
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="modal-title-notification">Hapus Halaqoh | <?= $delete->nama_halaqoh ?></h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <div class="py-3 text-center">
+                        <i class="ni ni-bell-55 ni-3x"></i>
+                        <p>Apakah Anda Yakin Untuk Menghapus Halaqoh .</p>
+                        <strong><?= $delete->nama_halaqoh ?></strong>
+                    </div>
+                    </div>
+                    <form action="<?= site_url('halaqoh/delete/'.$delete->id) ?>" method="POST">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-link text-white" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-sm btn-white ml-auto">Ya, Mengerti</button>
+                    </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

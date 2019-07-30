@@ -37,43 +37,6 @@ class Admin extends CI_Controller{
         $this->load->view('layout/footer', $data);
     }
 
-    function data_halaqoh(){
-        $guruid                 = $this->session->userdata('id_guru');
-        $guru                   = $this->M_Auth->get_guru($guruid);
-        $data['title']          = "Data Halaqoh";
-        $data['guru']           = $guru;
-        $data['halaqoh']        = $this->M_Admin->get_halaqoh()->result();
-        $data['list_guru']      = $this->M_Admin->get_guru()->result();
-
-        $this->load->view('layout/header_admin', $data);
-        $this->load->view('admin/data_halaqoh', $data);
-        $this->load->view('layout/footer', $data);
-    }
-
-    function tambah_halaqoh(){
-        $this->method = $_SERVER['REQUEST_METHOD'];
-        if($this->method == "POST"){
-            $this->M_Admin->tambah_halaqoh();
-            $this->session->set_flashdata('sukses', "Halaqoh Berhasil Di Tambahkan");
-            redirect($_SERVER['HTTP_REFERER']);
-        }else{
-            $this->session->set_flashdata('error', "Halaqoh Gagal Di Tambahkan");
-            redirect($_SERVER['HTTP_REFERER']);
-        }
-    }
-
-    function edit_halaqoh($id){
-        $this->method = $_SERVER['REQUEST_METHOD'];
-        if($this->method == "POST"){
-            $this->M_Admin->edit_halaqoh($id);
-            $this->session->set_flashdata('sukses', "Halaqoh Berhasil Di Edit");
-            redirect($_SERVER['HTTP_REFERER']);
-        }else{
-            $this->session->set_flashdata('error', "Halaqoh Gagal Di Edit");
-            redirect($_SERVER['HTTP_REFERER']);
-        }
-    }
-
     function data_user(){
         $guruid                 = $this->session->userdata('id_guru');
         $guru                   = $this->M_Auth->get_guru($guruid);
