@@ -46,7 +46,7 @@
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="myTable">
                                 <?php
                                     $no = 1;
                                     foreach($user as $row){
@@ -91,13 +91,13 @@
                         <div class="card-header bg-white border-0">
                             <div class="row align-items-center">
                                 <div class="col">
-                                    <h3 class="mb-0">Data User Musyrif / Admin</h3>
+                                    <h3 class="mb-0">Data User Walisantri</h3>
                                 </div>
                                 <div class="col-3 text-right">
-                                    <input type="text" id="myInput" placeholder="Cari User ..." class="form-control form-control-alternative form-control-sm">
+                                    <input type="text" id="myInput2" placeholder="Cari User ..." class="form-control form-control-alternative form-control-sm">
                                 </div>
                                 <div class="col-2">
-                                    <button type="button" data-toggle="modal" data-target="#tambah" class="btn btn-info">Tambah User</button>
+                                    <button type="button" data-toggle="modal" data-target="#tambahws" class="btn btn-info">Tambah User</button>
                                 </div>
                             </div>
                         </div>
@@ -109,14 +109,13 @@
                                         <th scope="col">Username</th>
                                         <th scope="col">Nama</th>
                                         <th scope="col">Status</th>
-                                        <th scope="col">Role</th>
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="myTable2">
                                 <?php
                                     $no = 1;
-                                    foreach($user as $row){
+                                    foreach($userws as $row){
                                     ?>
                                     <tr>
                                         <td scope="row">1</td>
@@ -138,15 +137,8 @@
                                             </span>
                                         </td>
                                         <td>
-                                            <?php if($row->role == '1'): ?>
-                                                Admin
-                                            <?php else: ?>
-                                                Musyrif
-                                            <?php endif; ?>
-                                        </td>
-                                        <td>
-                                            <button type="button" data-toggle="modal" data-target="#edit<?= $row->id ?>" class="btn btn-sm btn-secondary">Edit</button>
-                                            <button type="button" data-toggle="modal" data-target="#delete<?= $row->id ?>" class="btn btn-sm btn-danger">Hapus</button>
+                                            <button type="button" data-toggle="modal" data-target="#editws<?= $row->id ?>" class="btn btn-sm btn-secondary">Edit</button>
+                                            <button type="button" data-toggle="modal" data-target="#deletews<?= $row->id ?>" class="btn btn-sm btn-danger">Hapus</button>
                                         </td>
                                     </tr>
                                     <?php } ?>
@@ -206,6 +198,60 @@
                                         <option selected disabled>- Pilih Role -</option>
                                         <option value="1">Admin</option>
                                         <option value="2">Musyrif</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-link" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="tambahws" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <div class="col"> <h3 class="mb-0">Tambah User Walisantri</h3> </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                </div>
+                <form action="<?= site_url('user/tambahws') ?>" method="POST">
+                <div class="modal-body bg-secondary">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Username</label>
+                                    <input type="text" name="username" class="form-control form-control-alternative form-control-sm" placeholder="Username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Password</label>
+                                    <input type="password" name="password" class="form-control form-control-alternative form-control-sm" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Nama Siswa</label>
+                                    <select name="id_siswa" class="form-control form-control-alternative form-control-sm">
+                                        <option selected disabled>- Pilih Siswa -</option>
+                                        <?php foreach($list_siswa as $row){ ?>
+                                        <option value="<?= $row->id ?>"><?= $row->nama ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Status</label>
+                                    <select name="status" class="form-control form-control-alternative form-control-sm">
+                                        <option selected disabled>- Pilih Status -</option>
+                                        <option value="aktif">Aktif</option>
+                                        <option value="">Non Aktif</option>
                                     </select>
                                 </div>
                             </div>
@@ -289,7 +335,6 @@
     <?php } ?>
 
     <?php foreach($user as $delete){ ?>
-    <div class="col-md-4">
         <div class="modal fade" id="delete<?= $delete->id ?>" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
             <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
                 <div class="modal-content bg-gradient-danger">
@@ -315,5 +360,89 @@
                 </div>
             </div>
         </div>
+    <?php } ?>
+
+    <?php foreach($userws as $row){ ?>
+        <div class="modal fade" id="editws<?= $row->id ?>" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <div class="col"> <h3 class="mb-0">Edit User Walisantri <?= $row->username ?></h3> </div>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                </div>
+                <form action="<?= site_url('user/editws/'.$row->id) ?>" method="POST">
+                <div class="modal-body bg-secondary">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Username</label>
+                                    <input type="text" value="<?= $row->username ?>" name="username" class="form-control form-control-alternative form-control-sm" placeholder="Username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Password</label>
+                                    <input type="password" name="password" class="form-control form-control-alternative form-control-sm">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="">Nama Siswa</label>
+                                    <select name="id_siswa" class="form-control form-control-alternative form-control-sm">
+                                        <?php foreach($siswa as $s){ ?>
+                                        <option value="<?= $s->id ?>" <?php if($row->id_siswa == $s->id) ?>><?= $s->nama ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Status</label>
+                                    <select name="status" class="form-control form-control-alternative form-control-sm">
+                                        <?php if($row->status == NULL): ?>
+                                            <option selected disabled>- Pilih Status -</option>
+                                        <?php elseif($row->status == "Aktif"): ?>
+                                            <option selected value="aktif">Aktif</option>
+                                        <?php endif; ?>
+                                        <option value="aktif">Aktif</option>
+                                        <option value="">Non Aktif</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-link" data-dismiss="modal">Tutup</button>
+                    <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
+                </div>
+                </form>
+            </div>
+        </div>
     </div>
+
+        <div class="modal fade" id="deletews<?= $row->id ?>" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
+            <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
+                <div class="modal-content bg-gradient-danger">
+                    <div class="modal-header">
+                        <h6 class="modal-title" id="modal-title-notification">Hapus User Walisantri| <?= $row->username ?></h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    <div class="py-3 text-center">
+                        <i class="ni ni-bell-55 ni-3x"></i>
+                        <p>Apakah Anda Yakin Untuk Menghapus User Walisantri.</p>
+                        <strong><?= $row->username ?></strong>
+                    </div>
+                    </div>
+                    <form action="<?= site_url('user/deletews/'.$row->id) ?>" method="POST">
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-link text-white" data-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-sm btn-white ml-auto">Ya, Mengerti</button>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     <?php } ?>

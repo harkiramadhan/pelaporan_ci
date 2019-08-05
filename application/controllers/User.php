@@ -18,6 +18,9 @@ class User extends CI_Controller{
             $data['title']          = "Data User";
             $data['guru']           = $guru;
             $data['user']           = $this->M_User->get_user()->result();
+            $data['userws']         = $this->M_User->get_userws()->result();
+            $data['siswa']          = $this->M_User->get_allsiswa()->result();
+            $data['list_siswa']     = $this->M_User->get_siswa()->result();
             $data['list_guru']      = $this->M_User->get_guru()->result();
 
             $this->load->view('layout/header_admin', $data);
@@ -63,6 +66,49 @@ class User extends CI_Controller{
             $this->method = $_SERVER['REQUEST_METHOD'];
             if($this->method == "POST"){
                 $this->M_User->delete($id);
+                $this->session->set_flashdata('sukses', "User Berhasil Di Hapus");
+                redirect($_SERVER['HTTP_REFERER']);
+            }
+        }
+    }
+
+    function tambahws(){
+        if($this->session->userdata('role') == 1){
+            $this->method = $_SERVER['REQUEST_METHOD'];
+            if($this->method == "POST"){
+                $username   = $this->input->post('username', TRUE);
+                $cek        = $this->M_User->cek_usernamews($username)->result();
+                if($cek == TRUE){
+                    $this->session->set_flashdata('error', "Username Sudah Tersedia");
+                    redirect($_SERVER['HTTP_REFERER']);
+                }else{
+                    $this->M_User->tambahws();
+                    $this->session->set_flashdata('sukses', "User Berhasil Di Tambahkan");
+                    redirect($_SERVER['HTTP_REFERER']);
+                }
+            }else{
+                $this->session->set_flashdata('error', "User Gagal Di Tambahkan");
+                redirect($_SERVER['HTTP_REFERER']);
+            }
+        }
+    }
+
+    function editws($id){
+        if($this->session->userdata('role') == 1){
+            $this->method = $_SERVER['REQUEST_METHOD'];
+            if($this->method == "POST"){
+                $this->M_User->editws($id);
+                $this->session->set_flashdata('sukses', "User Berhasil Di Edit");
+                redirect($_SERVER['HTTP_REFERER']);
+            }
+        }
+    }
+
+    function deletews($id){
+        if($this->session->userdata('role') == 1){
+            $this->method = $_SERVER['REQUEST_METHOD'];
+            if($this->method == "POST"){
+                $this->M_User->deletews($id);
                 $this->session->set_flashdata('sukses', "User Berhasil Di Hapus");
                 redirect($_SERVER['HTTP_REFERER']);
             }

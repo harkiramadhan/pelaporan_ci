@@ -1,5 +1,5 @@
         <!-- Header -->
-        <div class="header bg-gradient-default pb-8 pt-md-8">
+        <div class="header bg-gradient-default pb-8 pt-md-5">
             <div class="container-fluid">
                 <div class="header-body"></div>
             </div>
