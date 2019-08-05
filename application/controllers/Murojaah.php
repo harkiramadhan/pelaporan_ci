@@ -20,7 +20,10 @@ class Murojaah extends CI_Controller{
             $data['guru']           = $guru;
             $data['siswa']          = $this->M_Musyrif->get_santrihalaqoh($guruid)->result();
             $data['murojaah']       = $this->M_Musyrif->get_murojaah($guruid)->result();
-            $get                    = file_get_contents("https://al-quran-8d642.firebaseio.com/data.json?print=pretty");
+            $baseurl                = base_url('assets/quran.json');
+            $query                  = $_SERVER['QUERY_STRING'];
+            $final_uri              = $baseurl.$query;
+            $get                    = file_get_contents($final_uri);
             $data['surat']          = json_decode($get, TRUE);
 
             $this->load->view('layout/header_musyrif', $data);
@@ -32,7 +35,10 @@ class Murojaah extends CI_Controller{
             $data['title']              = "Selamat Datang ". $siswa->nama;
             $data['siswa']              = $siswa;
             $data['murojaah']           = $this->M_Walisantri->get_murojaah($idsantri)->result();
-            $get                        = file_get_contents("https://al-quran-8d642.firebaseio.com/data.json?print=pretty");
+            $baseurl                    = base_url('assets/quran.json');
+            $query                      = $_SERVER['QUERY_STRING'];
+            $final_uri                  = $baseurl.$query;
+            $get                        = file_get_contents($final_uri);
             $data['surat']              = json_decode($get, TRUE);
 
             $this->load->view('layout/header_ws', $data);
