@@ -1,11 +1,3 @@
-0
-0 0 harkiramadhan/pelaporan_ci
- Code  Issues 0  Pull requests 0  Projects 0  Wiki  Security  Insights  Settings
-pelaporan_ci/application/views/layout/header_ws.php
-@harkiramadhan harkiramadhan slicing template
-6d3dcb9 4 days ago
-174 lines (172 sloc)  9.15 KB
-  
 <!--
 =========================================================
 * Argon Design System - v1.1.0
@@ -24,7 +16,7 @@ pelaporan_ci/application/views/layout/header_ws.php
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="DQM - Pelaporan Hafalan Dan Murojaah Santri.">
     <meta name="author" content="DQM">
-    <title>DQM - Pelaporan Hafalan Dan Murojaah Santri</title>
+    <title><?= $title ?></title>
     <!-- Favicon -->
     <link href="<?= base_url('') ?>/assets/img/brand/favicon.png" rel="icon" type="image/png">
     <!-- Fonts -->
@@ -67,22 +59,6 @@ pelaporan_ci/application/views/layout/header_ws.php
                         <div class=" dropdown-header noti-title">
                             <h6 class="text-overflow m-0">Welcome!</h6>
                         </div>
-                        <a href="./examples/profile.html" class="dropdown-item">
-                            <i class="ni ni-single-02"></i>
-                            <span>My profile</span>
-                        </a>
-                        <a href="./examples/profile.html" class="dropdown-item">
-                            <i class="ni ni-settings-gear-65"></i>
-                            <span>Settings</span>
-                        </a>
-                        <a href="./examples/profile.html" class="dropdown-item">
-                            <i class="ni ni-calendar-grid-58"></i>
-                            <span>Activity</span>
-                        </a>
-                        <a href="./examples/profile.html" class="dropdown-item">
-                            <i class="ni ni-support-16"></i>
-                            <span>Support</span>
-                        </a>
                         <div class="dropdown-divider"></div>
                         <a href="#!" class="dropdown-item">
                             <i class="ni ni-user-run"></i>
@@ -112,17 +88,17 @@ pelaporan_ci/application/views/layout/header_ws.php
                 <!-- Navigation -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="./index.html">
+                        <a class="nav-link <?php if($this->uri->segment(1) == "walisantri"){echo "active";} ?>" href="<?= site_url('walisantri') ?>">
                             <i class="ni ni-tv-2 text-primary"></i> Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./examples/icons.html">
+                        <a class="nav-link <?php if($this->uri->segment(1) == "hafalan"){echo "active";} ?>" href="<?= site_url('hafalan') ?>">
                             <i class="ni ni-planet text-blue"></i> Hafalan Baru
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./examples/maps.html">
+                        <a class="nav-link <?php if($this->uri->segment(1) == "murojaah"){echo "active";} ?>" href="<?= site_url('murojaah') ?>">
                             <i class="ni ni-pin-3 text-orange"></i> Murojaah
                         </a>
                     </li>
@@ -146,7 +122,7 @@ pelaporan_ci/application/views/layout/header_ws.php
                                     <img alt="Image placeholder" src="<?= base_url('') ?>/assets/img/theme/team-4-800x800.jpg">
                                 </span>
                                 <div class="media-body ml-2 d-none d-lg-block">
-                                    <span class="mb-0 text-sm  font-weight-bold">Ahmad</span>
+                                    <span class="mb-0 text-sm  font-weight-bold"><?= $siswa->nama ?></span>
                                 </div>
                             </div>
                         </a>
@@ -154,24 +130,8 @@ pelaporan_ci/application/views/layout/header_ws.php
                             <div class=" dropdown-header noti-title">
                                 <h6 class="text-overflow m-0">Welcome!</h6>
                             </div>
-                            <a href="./examples/profile.html" class="dropdown-item">
-                                <i class="ni ni-single-02"></i>
-                                <span>My profile</span>
-                            </a>
-                            <a href="./examples/profile.html" class="dropdown-item">
-                                <i class="ni ni-settings-gear-65"></i>
-                                <span>Settings</span>
-                            </a>
-                            <a href="./examples/profile.html" class="dropdown-item">
-                                <i class="ni ni-calendar-grid-58"></i>
-                                <span>Activity</span>
-                            </a>
-                            <a href="./examples/profile.html" class="dropdown-item">
-                                <i class="ni ni-support-16"></i>
-                                <span>Support</span>
-                            </a>
                             <div class="dropdown-divider"></div>
-                            <a href="#!" class="dropdown-item">
+                            <a href="<?= site_url('login/logout') ?>" class="dropdown-item">
                                 <i class="ni ni-user-run"></i>
                                 <span>Logout</span>
                             </a>
@@ -180,3 +140,10 @@ pelaporan_ci/application/views/layout/header_ws.php
                 </ul>
             </div>
         </nav>
+        <!-- Header -->
+        <div class="header bg-gradient-default pb-5 pt-5 pt-md-5">
+            <div class="container-fluid">
+                <div class="header-body">
+                </div>
+            </div>
+        </div>

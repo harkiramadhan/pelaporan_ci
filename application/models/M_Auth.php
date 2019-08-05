@@ -7,6 +7,11 @@ class M_Auth extends CI_Model{
         return $query;
     }
 
+    function authws($user,$pass){
+        $query = $this->db->get_where('tb_user_ws',['username'=>$user, 'password'=>md5($pass)],1);
+        return $query;
+    }
+
     function get_guru($id_guru){
         return $this->db->get_where('tb_guru', ['id'=>$id_guru])->row();
     }

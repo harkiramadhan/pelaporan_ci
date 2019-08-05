@@ -40,6 +40,23 @@ class Login extends CI_Controller{
         }
     }
 
+    function walisantri(){
+        $user   = htmlspecialchars($this->input->post('username', TRUE), ENT_QUOTES);
+        $pass   = htmlspecialchars($this->input->post('password', TRUE), ENT_QUOTES);
+        $auth   = $this->M_Auth->authws($user,$pass);
+        
+        if($auth->num_rows() > 0){
+            $data = $auth->row_array();
+            $this->session->set_userdata('masuk',TRUE);
+            $this->session->set_userdata('id_siswa', $data['id_siswa']);
+            $this->session->set_userdata('role', 3);
+            redirect('walisantri');
+        }else{
+            $this->session->set_flashdata('msg', "Username Atau Password Salah");
+            redirect('Login');
+        }
+    }
+
     // Fungsi Logut
     function logout(){
         $this->session->sess_destroy();

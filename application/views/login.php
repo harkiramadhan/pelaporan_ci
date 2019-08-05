@@ -120,7 +120,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="tabs-icons-text-2" role="tabpanel" aria-labelledby="tabs-icons-text-2-tab">
                                     <div class="container">
-                                        <form role="form" method="POST" action="<?= site_url('login/ws'); ?>">
+                                        <form role="form" method="POST" action="<?= site_url('login/walisantri'); ?>">
                                             <div class="card-header text-center">
                                                 <h3>Walisantri</h3>
                                             </div>
@@ -129,7 +129,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                                                     </div>
-                                                    <input class="form-control form-control-alternative" type="text" placeholder="Username" required>
+                                                    <input class="form-control form-control-alternative" type="text" placeholder="Username" name="username" required>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -137,7 +137,7 @@
                                                     <div class="input-group-prepend">
                                                         <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                                                     </div>
-                                                    <input class="form-control" type="password" required>
+                                                    <input class="form-control" type="password" name="password" required>
                                                 </div>
                                             </div>
                                             <div class="text-center">

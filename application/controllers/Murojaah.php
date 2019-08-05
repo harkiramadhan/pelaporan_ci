@@ -5,6 +5,7 @@ class Murojaah extends CI_Controller{
         parent::__construct();
         $this->load->model('M_Auth');
         $this->load->model('M_Musyrif');
+        $this->load->model('M_Walisantri');
         if($this->session->userdata('masuk') !=TRUE){
             $url=base_url();
             redirect ($url);
@@ -26,7 +27,17 @@ class Murojaah extends CI_Controller{
             $this->load->view('musyrif/murojaah', $data);
             $this->load->view('layout/footer', $data);
         }elseif($this->session->userdata('role') ==3){
+            $idsantri                   = $this->session->userdata('id_siswa');
+            $siswa                      = $this->M_Walisantri->get_siswa($idsantri);
+            $data['title']              = "Selamat Datang ". $siswa->nama;
+            $data['siswa']              = $siswa;
+            $data['murojaah']           = $this->M_Walisantri->get_murojaah($idsantri)->result();
+            $get                        = file_get_contents("https://al-quran-8d642.firebaseio.com/data.json?print=pretty");
+            $data['surat']              = json_decode($get, TRUE);
 
+            $this->load->view('layout/header_ws', $data);
+            $this->load->view('walisantri/murojaah', $data);
+            $this->load->view('layout/footer', $data);
         }
     }
 

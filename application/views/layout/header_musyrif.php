@@ -127,7 +127,7 @@
                                   <img alt="Image placeholder" src="<?= base_url('') ?>/assets/img/theme/team-4-800x800.jpg">
                                 </span>
                                 <div class="media-body ml-2 d-none d-lg-block">
-                                    <span class="mb-0 text-sm  font-weight-bold">Admin</span>
+                                    <span class="mb-0 text-sm  font-weight-bold"><?= $guru->nama ?></span>
                                 </div>
                             </div>
                         </a>
