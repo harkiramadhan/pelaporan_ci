@@ -16,7 +16,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="DQM - Pelaporan Hafalan Dan Murojaah Santri.">
     <meta name="author" content="DQM">
-    <title>DQM - Pelaporan Hafalan Dan Murojaah Santri</title>
+    <title><?= $title ?></title>
     <!-- Favicon -->
     <link href="<?= base_url('') ?>/assets/img/brand/favicon.png" rel="icon" type="image/png">
     <!-- Fonts -->
@@ -104,22 +104,22 @@
                 <!-- Navigation -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="./index.html">
+                        <a class="nav-link <?php if($this->uri->segment(2) == "" && $this->uri->segment(1) == "musyrif"){ echo "active"; }  ?>" href="<?= site_url('musyrif') ?>">
                             <i class="ni ni-tv-2 text-primary"></i> Dashboard
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./examples/icons.html">
+                        <a class="nav-link <?php if($this->uri->segment(2) == "" && $this->uri->segment(1) == "siswa"){ echo "active"; }  ?>" href="<?= site_url('siswa') ?>">
                             <i class="ni ni-planet text-blue"></i> Data Santri
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./examples/maps.html">
+                        <a class="nav-link <?php if($this->uri->segment(1) == "hafalan"){ echo "active"; }  ?>" href="<?= site_url('hafalan') ?>">
                             <i class="ni ni-pin-3 text-orange"></i> Hafalan Baru
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./examples/profile.html">
+                        <a class="nav-link <?php if($this->uri->segment(1) == "murojaah"){ echo "active"; }  ?>" href="<?= site_url('murojaah') ?>">
                             <i class="ni ni-single-02 text-yellow"></i> Murojaah
                         </a>
                     </li>
@@ -177,3 +177,10 @@
                 </ul>
             </div>
         </nav>
+        <!-- Header -->
+        <div class="header bg-gradient-default pb-5 pt-5 pt-md-5">
+            <div class="container-fluid">
+                <div class="header-body">
+                </div>
+            </div>
+        </div>

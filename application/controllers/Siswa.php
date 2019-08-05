@@ -5,6 +5,7 @@ class Siswa extends CI_Controller{
         parent::__construct();
         $this->load->model('M_Auth');
         $this->load->model('M_Admin');
+        $this->load->model('M_Musyrif');
         if($this->session->userdata('masuk') !=TRUE){
             $url=base_url();
             redirect ($url);
@@ -21,6 +22,16 @@ class Siswa extends CI_Controller{
 
             $this->load->view('layout/header_admin', $data);
             $this->load->view('admin/data_santri', $data);
+            $this->load->view('layout/footer', $data);
+        }elseif($this->session->userdata('role') ==2){
+            $guruid                 = $this->session->userdata('id_guru');
+            $guru                   = $this->M_Auth->get_guru($guruid);
+            $data['title']          = "Data Siswa";
+            $data['guru']           = $guru;
+            $data['santri']         = $this->M_Musyrif->get_santrihalaqoh($guruid)->result();
+
+            $this->load->view('layout/header_musyrif', $data);
+            $this->load->view('musyrif/data_santri', $data);
             $this->load->view('layout/footer', $data);
         }
     }
