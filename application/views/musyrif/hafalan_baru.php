@@ -13,7 +13,7 @@
                                     <h3 class="mb-0">Data Hafalan Baru</h3>
                                 </div>
                                 <div class="col-3 text-right">
-                                    <input type="text" placeholder="Cari Siswa ..." class="form-control form-control-alternative form-control-sm">
+                                    <input id="myInput" type="text" placeholder="Cari Siswa ..." class="form-control form-control-alternative form-control-sm">
                                 </div>
                                 <div class="col-2">
                                     <button type="button" data-toggle="modal" data-target="#tambah" class="btn btn-info">Tambah Hafalan</button>
@@ -35,7 +35,7 @@
                                         <th scope="col">Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="myTable">
                                     <?php 
                                     $no = 1;
                                     foreach($hafalan as $row){ ?>
